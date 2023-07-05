@@ -2,3 +2,4 @@
 .terraform
 assignment2
 assignment2.pub
+/terra infra/terraform.tfstate
