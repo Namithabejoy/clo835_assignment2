@@ -29,7 +29,7 @@ jobs:
     - name: Build, test, tag, and push image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: mysql-images
+        ECR_REPOSITORY: namitha_mysql-repo
         IMAGE_TAG: v0.1
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile_mysql .
@@ -38,7 +38,7 @@ jobs:
     - name: Build, test, tag, and push image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: webapp-images
+        ECR_REPOSITORY: namitha_python-app-repo
         IMAGE_TAG: v0.1
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .

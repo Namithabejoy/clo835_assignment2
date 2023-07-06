@@ -53,11 +53,3 @@ resource "aws_key_pair" "k8s" {
   key_name   = "assignment2"
   public_key = file("${path.module}/assignment2.pub")
 }
-
-resource "aws_ecr_repository" "mysql-images" {
-  name = "mysql-images"
-  }
-  
-  resource "aws_ecr_repository" "webapp-images" {
-  name = "webapp-images"
-  }
