@@ -53,3 +53,11 @@ resource "aws_key_pair" "k8s" {
   key_name   = "assignment2"
   public_key = file("${path.module}/assignment2.pub")
 }
+
+resource "aws_ecr_repository" "namitha_mysql-repo" {
+  name = "namitha_mysql-repo"
+  }
+  
+  resource "aws_ecr_repository" "namitha_python-app-repo" {
+  name = "namitha_python-app-repo"
+  }
