@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: python-app
+  namespace: webapp
+spec:
+  containers:
+    - name: python-app
+      image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_python-app-repo:v0.1
+      env:
+        - name: DBPSWD
+          value: mysql
+        - name: DBUSER
+          value: namitha
+        - name: DBHOST
+          value: "new.mysql.host"
+        - name: DBPORT
+          value: "3306"
+      ports:
+        - containerPort: 8080

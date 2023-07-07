@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-webapp
+  labels:
+    app: employees
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employees
+  template:
+    metadata:
+      labels:
+        app: employees
+    spec:
+      containers:
+        - name: nb-python-container
+          image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_mysql-repo
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DBHOST
+              valueFrom:
+                configMapKeyRef:
+                  name: mysqldb-configmap
+                  key: database_url
+            - name: DBPWD
+              value: db_pass123
+            - name: DBPORT
+              value: '3306'
+            - name: DBUSER
+              value: root
+            - name: APP_COLOR
+              value: lime
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
