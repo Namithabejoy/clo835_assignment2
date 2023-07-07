@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-app
-  namespace: webapp
+  name: python-appv2
+  namespace: webapp2
   labels:
     app: employees
-    version: v1
+    version: v2
 spec:
   replicas: 3
   selector:
     matchLabels:
       app: employees
-      version: v1
+      version: v2
   template:
     metadata:
       labels:
         app: employees
-        version: v1
+        version: v2
     spec:
       containers:
-      - name: python-app
+      - name: python-appv2
         image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_python-app-repo:v0.1
         env:
-          - name: DBPSWD
+          - name: DBPWD
             value: mysql
           - name: DBUSER
             value: namitha
