@@ -1,41 +1,42 @@
-# Install the required MySQL package
+Steps to deploy:
+1) Setting up environment:
+   ssh-keygen -f <publickeyname>
+   alias tf=terraform
+   tf init
+   tf validate
+   tf plan
+   tf apply --auto-approve
 
-sudo apt-get update -y
-sudo apt-get install mysql-client -y
+2) Copying files
+   scp -i <publickeyname> <yaml file name> <ec2-publicIP>:/tmp
 
-# Running application locally
-pip3 install -r requirements.txt
-sudo python3 app.py
-# Building and running 2 tier web application locally
-### Building mysql docker image 
-```docker build -t my_db -f Dockerfile_mysql . ```
-
-### Building application docker image 
-```docker build -t my_app -f Dockerfile . ```
-
-### Running mysql
-```docker run -d -e MYSQL_ROOT_PASSWORD=pw  my_db```
-
-
-### Get the IP of the database and export it as DBHOST variable
-```docker inspect <container_id>```
-
-
-### Example when running DB runs as a docker container and app is running locally
-```
-export DBHOST=127.0.0.1
-export DBPORT=3307
-```
-### Example when running DB runs as a docker container and app is running locally
-```
-export DBHOST=172.17.0.2
-export DBPORT=3306
-```
-```
-export DBUSER=root
-export DATABASE=employees
-export DBPWD=pw
-export APP_COLOR=blue
-```
-### Run the application, make sure it is visible in the browser
-```docker run -p 8080:8080  -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD  my_app```
+3) Logging in and setting up kind & kubectl:
+   ssh -i <publickeyname> <ec2-publicIP>
+   chmod 777 init_kind.sh
+   ./init_kind.sh
+   alias k=kubectl
+   k get nodes
+   k create ns sqldb
+   
+4) Running Mysql component:
+   k apply -f pod-mysql.yaml -n sqldb
+   k apply -f deploy-mysql.yaml -n sqldb
+   k apply -f replica-mysql.yaml -n slqdb
+   k apply -f service-mysql.yaml -n sqldb
+   
+5) Running python application component:
+   k create ns webapp 
+   k apply -f pod-python.yaml -n webapp
+   k apply -f replica-python.yaml -n webapp
+   k apply -f deploy-python.yaml -n webapp
+   k apply -f deploy-service.yaml -n webapp
+   k port-forward svc/python-app 8080:8080 -n webapp
+   
+6) Updating image version:
+   k edit deployment.apps/python-app -n webapp
+   change version to v2 and save file
+   k apply -f deploy-pythonv2.yaml -n webapp
+   k rollout history deployment.apps/python-app -n webapp
+   k get pods -n webapp 
+   
+   

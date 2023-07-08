@@ -25,9 +25,9 @@ spec:
           - name: DBPWD
             value: mysql
           - name: DBUSER
-            value: namitha
+            value: root
           - name: DBHOST
-            value: new.mysql.host
+            value: "mysql-service-nb.sqldb.svc.cluster.local"
           - name: DBPORT
             value: "3306"
         ports:
