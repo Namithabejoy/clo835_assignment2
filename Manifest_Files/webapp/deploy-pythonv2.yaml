@@ -27,7 +27,7 @@ spec:
           - name: DBUSER
             value: namitha
           - name: DBHOST
-            value: "new.mysql.host"
+            value: new.mysql.host
           - name: DBPORT
             value: "3306"
         ports:
