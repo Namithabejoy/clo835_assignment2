@@ -23,11 +23,11 @@ spec:
           image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_python-app-repo:application-v2.1
           env:
             - name: DBPWD
-              value: "nb_25"
+              value: "passwors"
             - name: DBUSER
               value: root
             - name: DBHOST
-              value: 10.96.74.232
+              value: "mysql-service-nb.sqldb.svc.cluster.local"
             - name: DBPORT
               value: "3306"
           ports:

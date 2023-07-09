@@ -3,12 +3,10 @@ kind: Service
 metadata:
   name: mysql-service-nb
   namespace: sqldb
-  labels:
-    app: mysql
 spec:
-  ports:
-  - port: 3306
-    targetPort: 3306
   selector:
     app: mysql
-    type: ClusterIP
+  type: ClusterIP
+  ports:
+    - port: 3306
+      targetPort: 3306
