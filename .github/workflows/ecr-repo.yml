@@ -5,15 +5,11 @@ on:
     branches: [ master ]
 
 jobs:
-  
   build:
-    
-    name: Build Image
+    name: Build and Push Images
     runs-on: ubuntu-latest
 
-   
     steps:
-
     - name: Check out code
       uses: actions/checkout@v2
 
@@ -26,20 +22,22 @@ jobs:
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
         AWS_REGION: us-east-1
 
-    - name: Build, test, tag, and push image to Amazon ECR
+    - name: Build, test, tag, and push application image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: namitha_mysql-repo
-        IMAGE_TAG: v.1.0
+        APPLICATION_IMAGE_TAG: v2.1
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile_mysql .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG 
+        # Docker build and push application image
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:application-$APPLICATION_IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:application-$APPLICATION_IMAGE_TAG
 
-    - name: Build, test, tag, and push image to Amazon ECR
+    - name: Build, test, tag, and push MySQL image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: namitha_python-app-repo
-        IMAGE_TAG: v.1.0
+        MYSQL_IMAGE_TAG: v5.6
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        # Docker build and push MySQL image
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:mysql-$MYSQL_IMAGE_TAG -f Dockerfile_mysql .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:mysql-$MYSQL_IMAGE_TAG
