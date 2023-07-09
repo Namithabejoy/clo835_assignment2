@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: python-appv2
-        image: 
+        image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_python-app-repo:application-v2.1
         env:
           - name: DBPWD
             value: mysql
