@@ -1,34 +1,23 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: python-app
-  namespace: webapp
-  labels:
-    app: employees
-    version: v1
+  name: mysql-rs-nb
+  namespace: sqldb
 spec:
-  replicas: 3
+  replicas: 3  
   selector:
     matchLabels:
-      app: employees
-      version: v1
+      app: mysql
   template:
     metadata:
       labels:
-        app: employees
-        version: v1
+        app: mysql
     spec:
       containers:
-        - name: python-app
-          image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_python-app-repo:v0.1
+        - name: mysql-img
+          image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_mysql-repo:v0.1
           env:
-            - name: DBPSWD
-              value: mysql
-            - name: DBUSER
-              value: namitha
-            - name: DBHOST
-              value: "new.mysql.host"
-            - name: DBPORT
-              value: "3306"
+            - name: MYSQL_ROOT_PASSWORD
+              value: "nb_25"
           ports:
-            - containerPort: 8080
+            - containerPort: 3306
