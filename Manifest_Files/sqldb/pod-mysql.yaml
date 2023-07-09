@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
     - name: mysql  
-      image: 132456686334.dkr.ecr.us-east-1.amazonaws.com/mysql-img:mysql_version_1
+      image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_mysql-repo:v.1.0
       env:
         - name: MYSQL_ROOT_PASSWORD
           value: "nb_25"

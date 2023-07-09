@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: mysql-images
-          image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_mysql-repo:v0.1
+          image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_mysql-repo:v.1.0
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: "nb_25"
