@@ -20,14 +20,14 @@ spec:
     spec:
       containers:
         - name: python-app
-          image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_python-app-repo:v0.1
+          image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_python-app-repo:v.1.0
           env:
             - name: DBPWD
               value: mysql
             - name: DBUSER
               value: root
             - name: DBHOST
-              value: "mysql-service-nb.sqldb.svc.cluster.local"
+              value: 10.96.74.232
             - name: DBPORT
               value: "3306"
           ports:

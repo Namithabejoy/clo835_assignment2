@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: python-app
-        image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_python-app-repo:v0.1
+        image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_python-app-repo:v.1.0
         env:
           - name: DBPWD
             value: mysql
@@ -30,5 +30,7 @@ spec:
             value: 10.96.74.232
           - name: DBPORT
             value: "3306"
+          - name: DATABASE
+            value: employees
         ports:
         - containerPort: 8080
