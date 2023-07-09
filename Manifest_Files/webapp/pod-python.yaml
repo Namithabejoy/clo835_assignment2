@@ -11,7 +11,7 @@ spec:
              
       env:
         - name: DBPWD
-          value: mysql
+          value: "nb_25"
         - name: DBUSER
           value: root
         - name: DBHOST

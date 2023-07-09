@@ -23,7 +23,7 @@ spec:
           image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_python-app-repo:v.1.0
           env:
             - name: DBPWD
-              value: mysql
+              value: "nb_25"
             - name: DBUSER
               value: root
             - name: DBHOST
