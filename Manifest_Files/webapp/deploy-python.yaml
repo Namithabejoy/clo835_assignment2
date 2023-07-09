@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: python-app
-        image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_python-app-repo:v.1.0
+        image: 
         env:
           - name: DBPWD
             value: "nb_25"
