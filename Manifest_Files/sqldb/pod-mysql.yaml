@@ -5,8 +5,8 @@ metadata:
   namespace: sqldb
 spec:
   containers:
-    - name: mysql  
-      image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_mysql-repo:mysql-v5.6
+    - name:   
+      image: 
       env:
         - name: MYSQL_ROOT_PASSWORD
           value: "passwors"
