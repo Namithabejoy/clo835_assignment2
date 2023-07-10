@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
     - name: namitha-python-app-repo
-      image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha-python-app-repo:application-v2.1
+      image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha-python-app-repo:application-v1.0
       env:
         - name: DBPWD
           value: "passwors"
