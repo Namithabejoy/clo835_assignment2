@@ -19,7 +19,7 @@ spec:
         version: v1
     spec:
       containers:
-        - name: python-app
+        - name: namitha_python-app-repo
           image: 499560713632.dkr.ecr.us-east-1.amazonaws.com/namitha_python-app-repo:application-v2.1
           env:
             - name: DBPWD

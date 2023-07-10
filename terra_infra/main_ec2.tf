@@ -55,9 +55,9 @@ resource "aws_key_pair" "k8s" {
 }
 
 resource "aws_ecr_repository" "namitha_mysql-repo" {
-  name = "namitha_mysql-repo"
+  name = "namitha-mysql-repo"
   }
   
   resource "aws_ecr_repository" "namitha_python-app-repo" {
-  name = "namitha_python-app-repo"
+  name = "namitha-python-app-repo"
   }
