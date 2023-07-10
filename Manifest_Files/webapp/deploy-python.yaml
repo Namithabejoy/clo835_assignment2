@@ -19,17 +19,20 @@ spec:
         version: v1
     spec:
       containers:
-      - name: python-app
-        image: 
-        env:
-          - name: DBPWD
-            value: "nb_25"
-          - name: DBUSER
-            value: root
-          - name: DBHOST
-            value: 10.96.74.232
-          - name: DBPORT
-            value: "3306"
-          
-        ports:
-        - containerPort: 8080
+        - name: 
+          image: 
+          env:
+            - name: DBPWD
+              value: "passwors"
+            - name: DBUSER
+              value: root
+            - name: DBHOST
+              value: "mysql-service-nb.sqldb.svc.cluster.local"
+            - name: DBPORT
+              value: "3306"
+            - name: DATABASE
+              value: employees
+            - name: APP_COLOR
+              value: lime
+          ports:
+            - containerPort: 8080

@@ -16,10 +16,12 @@ spec:
         app: mysql
     spec:
       containers:
-        - name: mysql-images
+        - name: 
           image: 
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: "nb_25"
+              value: "passwors"
+            - name: MYSQL_DATABASE
+              value: employees
           ports:
             - containerPort: 3306
