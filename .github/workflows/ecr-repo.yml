@@ -26,7 +26,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: namitha-python-app-repo
-        APPLICATION_IMAGE_TAG: v2.2
+        APPLICATION_IMAGE_TAG: v1.0
       run: |
         # Docker build and push application image
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:application-$APPLICATION_IMAGE_TAG .
@@ -36,7 +36,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: namitha-mysql-repo
-        MYSQL_IMAGE_TAG: v2.2
+        MYSQL_IMAGE_TAG: v1.0
       run: |
         # Docker build and push MySQL image
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:mysql-$MYSQL_IMAGE_TAG -f Dockerfile_mysql .
