@@ -21,6 +21,6 @@ spec:
         - name: DATABASE
           value: employees
         - name: APP_COLOR
-          value: blue
+          value: lime
       ports:
         - containerPort: 8080

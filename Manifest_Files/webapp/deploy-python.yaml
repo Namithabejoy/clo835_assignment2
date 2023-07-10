@@ -31,8 +31,3 @@ spec:
             - name: DBPORT
               value: "3306"
             - name: DATABASE
-              value: employees
-            - name: APP_COLOR
-              value: lime
-          ports:
-            - containerPort: 8080
