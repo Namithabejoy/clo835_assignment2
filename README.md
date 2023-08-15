@@ -38,5 +38,5 @@ Steps to deploy:
    k apply -f deploy-pythonv2.yaml -n webapp
    k rollout history deployment.apps/python-app -n webapp
    k get pods -n webapp 
-   
+   hhf
    
